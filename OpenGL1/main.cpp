@@ -5,6 +5,7 @@
 int main(void)
 {
     float theta = 0.0f;
+    float move = 0.0f;
     GLFWwindow* window;
 
     /* Initialize the library */
@@ -42,31 +43,33 @@ int main(void)
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
-        /*glBegin(GL_TRIANGLES);
-        glVertex2f(0.5f, -0.5f);
-        glVertex2f(0.0f, 0.5f);
-        glVertex2f(-0.5f, -0.5f);
-        glEnd();*/
-            /* OpenGL animation code goes here */
-
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         glPushMatrix();
+        
+        //glRotatef(move, 1.0f, 1.0f, 1.0f);
+        
+        glBegin(GL_TRIANGLES);
+        glColor3f(1.0f, 0.0f, 1.0f); glVertex2f(0.5f, -0.7f);
+        glColor3f(0.0f, 1.0f, 0.0f);      glVertex2f(0.0f, 0.5f);
+        glColor3f(0.0f, 0.0f, 1.0f);                  glVertex2f(-0.5f, -0.5f);
+        glEnd();
+        
+
+        
         glRotatef(theta, 1.0f, 1.0f, 1.0f);
 
         glBegin(GL_TRIANGLES);
 
-        glColor3f(0.5f, 0.5f, 0.5f);   glVertex2f(0.0f, 1.0f);
-        glColor3f(0.5f, 0.5f, 0.5f);   glVertex2f(0.87f, -0.5f);
-        glColor3f(0.5f, 0.5f, 0.5f);   glVertex2f(-0.87f, -0.5f);
+        glColor3f(1.0f, 0.0f, 0.0f);   glVertex2f(0.0f, 1.0f);
+        glColor3f(0.0f, 1.0f, 0.0f);   glVertex2f(0.87f, -0.5f);
+        glColor3f(0.0f, 0.0f, 1.0f);   glVertex2f(-0.87f, -0.5f);
 
         glEnd();
 
         glPopMatrix();
 
         theta += 1.0f;
+        move += 1.0f;
         Sleep(1);
 
     /* Swap front and back buffers */
