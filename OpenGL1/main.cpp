@@ -1,11 +1,19 @@
 #include <GLFW/glfw3.h>
 #include <Windows.h>
+#include <iostream>
 
+
+void test() {
+    float *x1 = new float(1.0f);
+    float *x2 = new float(1.0f);
+    std::cout << "res float exex: " << *x1 * *x2 << std::endl;
+}
 
 int main(void)
 {
-    float theta = 0.0f;
-    float move = 0.0f;
+    test();
+    float* theta = new float(0.0f);
+    float* move = new float(0.0f);
     GLFWwindow* window;
 
     /* Initialize the library */
@@ -46,7 +54,7 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT);
         glPushMatrix();
         
-        //glRotatef(move, 1.0f, 1.0f, 1.0f);
+        glRotatef(*move, 1.0f, 1.0f, 1.0f);
         
         glBegin(GL_TRIANGLES);
         glColor3f(1.0f, 0.0f, 1.0f); glVertex2f(0.5f, -0.7f);
@@ -56,7 +64,7 @@ int main(void)
         
 
         
-        glRotatef(theta, 1.0f, 1.0f, 1.0f);
+        glRotatef(*theta, 1.0f, 1.0f, 1.0f);
 
         glBegin(GL_TRIANGLES);
 
@@ -68,8 +76,8 @@ int main(void)
 
         glPopMatrix();
 
-        theta += 1.0f;
-        move += 1.0f;
+        *theta -= 0.5f;
+        *move -= 0.5f;
         Sleep(1);
 
     /* Swap front and back buffers */
@@ -78,6 +86,9 @@ int main(void)
     /* Poll for and process events */
     glfwPollEvents();//пока не завершится предыдущее событие, не будет "отвечать"
 }
+    delete theta;
+    delete move;
     glfwDestroyWindow(window);
+    std::cout << TEXT("glfwGetVersion(NULL, NULL, NULL)") << std::endl;
     return 0;
 }
