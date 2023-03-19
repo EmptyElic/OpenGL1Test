@@ -9,12 +9,21 @@ void test() {
     float* x1 = new float(0.9f);
     //float *x2 = new float(0.9f);
     float x3 = 1;
-    for (; x3 > 0;) {
-        x3 = *x1 * *x1;
-        
-        std::cout << "Умножение 1.0f и 1.0f: " << x3 << std::endl;
+    for (; *x1 > 0.00001;) {
+        *x1 *= *x1;
+         
+        std::cout << "Умножение 1.0f и 1.0f: " << *x1 << std::endl;
     }
     delete x1;
+    
+    ////////////////Работа с указателями///////////////////
+    
+    /*Для указателей (*имя_переменной), для проведения операций над значениями необходимо использовать 
+    Оператор разыменования - "*".Для ссылок же (&имя_переменной) нет.  */
+    short per1 = 1;
+    short* ukaz1 = &per1;
+    
+    
     //Создание динамического массива:
     int N;
     std::cout << "Размер массива: " << std::endl;
@@ -37,14 +46,15 @@ void test() {
             std::cout << "arr[" << i << "] :" << arr[i] << std::endl;
         delete[] arr;
         }
-    test();
+    //test();
 }
 
 int main()
 {
-    //std::cout << glfwGetPrimaryMonitor(); куча нулей 
+    //std::cout << glfwGetPrimaryMonitor() << std::endl;// куча нулей 
     test();
     GLFWmonitor* primary = glfwGetPrimaryMonitor();    
+    
     float* theta = new float(0.0f);
     float* move = new float(0.0f);
     GLFWwindow* window;
