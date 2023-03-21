@@ -138,6 +138,9 @@
   <ItemGroup>
     <Image Include="C:\Users\SystemX\Pictures\pepega.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Test.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
